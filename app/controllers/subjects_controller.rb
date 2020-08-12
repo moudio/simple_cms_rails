@@ -4,7 +4,7 @@ class SubjectsController < ApplicationController
   end
 
   def show
-    @subect = Subject.find(params[:id])
+    @subject = Subject.find(params[:id])
   end
 
   def new
