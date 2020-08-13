@@ -1,23 +1,23 @@
 require 'test_helper'
 
-class SessionsControllerTest < ActionDispatch::IntegrationTest
+class SectionsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get sessions_index_url
+    get sections_index_url
     assert_response :success
   end
 
   test "should get edit" do
-    get sessions_edit_url
+    get sections_edit_url
     assert_response :success
   end
 
   test "should get show" do
-    get sessions_show_url
+    get sections_show_url
     assert_response :success
   end
 
   test "should get delete" do
-    get sessions_delete_url
+    get sections_delete_url
     assert_response :success
   end
 
