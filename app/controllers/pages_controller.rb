@@ -3,7 +3,16 @@ class PagesController < ApplicationController
     @pages = Page.all
   end
 
+  def new
+    @page = Page.new 
+  end
+
+
+  def create
+  end
+
   def show
+
   end
 
   def edit
