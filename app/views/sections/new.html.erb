@@ -1,3 +1,4 @@
+
 <% if !flash[:error].blank? %>
 <div class="error">
   <% flash[:error].each do |error| %>
@@ -6,21 +7,21 @@
 </div>
 <% end %>
 
-<%= link_to("<< Back to List", pages_path, :class => 'back-link') %>
+<%= link_to("<< Back to List", sections_path, :class => 'back-link') %>
 
-<div class="pages new">
-  <h2>Update Page</h2>
+<div class="sections new">
+  <h2>Create Section</h2>
 
-  <%= form_for(@page) do |f| %>
+  <%= form_for(@section, :url => sections_path, :method => 'post') do |f| %>
 
-    <table summary="Subject form fields">
+    <table summary="Sections form fields">
       <tr>
         <th>Name</th>
         <td><%= f.text_field(:name) %></td>
       </tr>
       <tr>
-        <th>Permalink</th>
-        <td><%= f.text_field(:permalink) %></td>
+        <th>Content Type</th>
+        <td><%= f.text_field(:content_type) %></td>
       </tr>
       <tr>
         <th>Position</th>
@@ -32,14 +33,19 @@
       </tr>
 
     <tr>
-    <th>Subject ID</th>
-    <td><%= f.text_field(:subject_id) %></td>
+    <th>Page ID</th>
+    <td><%= f.text_field(:page_id) %></td>
+  </tr>
+
+    <tr>
+    <th>Content</th>
+    <td><%= f.text_area(:content) %></td>
   </tr>
 
     </table>
 
     <div class="form-buttons">
-      <%= f.submit("Update Page") %>
+      <%= f.submit("Create Section") %>
     </div>
 
   <% end %>

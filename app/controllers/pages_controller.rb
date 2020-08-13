@@ -24,9 +24,29 @@ class PagesController < ApplicationController
   end
 
   def edit
+    @page = Page.find(params[:id])
+  end
+
+  def update
+    @page = Page.find(params[:id])
+    if @page.update_attributes(page_params)
+      flash[:notice] = "Page updated successfully"
+      redirect_to(page_path(@page))
+    else
+
+      render 'edit'
+    end
   end
 
   def delete
+      @page = Page.find(params[:id])
+  end
+
+  def destroy
+    @page = Page.find(params[:id])
+    @page.destroy
+    flash[:notice] = "Page '#{@page.name}' destroyed successfully"
+    redirect_to(pages_path)
   end
 
   private
