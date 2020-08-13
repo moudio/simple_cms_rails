@@ -14,13 +14,13 @@ class PagesController < ApplicationController
       flash[:notice] = "Page created successfully"
       redirect_to(pages_path)
     else
-
+      flash[:error] = @page.errors.full_messages
       render 'new'
     end
   end
 
   def show
-
+    @page = Page.find(params[:id])
   end
 
   def edit
@@ -31,6 +31,6 @@ class PagesController < ApplicationController
 
   private
   def page_params
-    params.require(:page).permit(:name, :permalink, :position, :visible)
+    params.require(:page).permit(:name, :permalink, :position, :visible, :subject_id)
   end
 end

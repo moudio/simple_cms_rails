@@ -1,9 +1,17 @@
+<% if !flash[:error].blank? %>
+<div class="error">
+  <% flash[:error].each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+</div>
+<% end %>
+
 <%= link_to("<< Back to List", pages_path, :class => 'back-link') %>
 
 <div class="pages new">
   <h2>Create Page</h2>
 
-  <%= form_for(@subject, :url => pages_path, :method => 'post') do |f| %>
+  <%= form_for(@page, :url => pages_path, :method => 'post') do |f| %>
 
     <table summary="Subject form fields">
       <tr>
@@ -22,6 +30,11 @@
         <th>Visible</th>
         <td><%= f.text_field(:visible) %></td>
       </tr>
+
+    <tr>
+    <th>Subject ID</th>
+    <td><%= f.text_field(:subject_id) %></td>
+  </tr>
 
     </table>
 
