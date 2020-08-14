@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
+  layout 'admin'
   def index
-    @pages = Page.all
+    @pages = Page.sorted
   end
 
   def new
@@ -33,7 +34,6 @@ class PagesController < ApplicationController
       flash[:notice] = "Page updated successfully"
       redirect_to(page_path(@page))
     else
-
       render 'edit'
     end
   end
