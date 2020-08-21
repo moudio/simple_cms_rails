@@ -6,6 +6,8 @@ class PagesController < ApplicationController
 
   def new
     @page = Page.new
+    @page_count = Page.count + 1
+    @subjects = Subject.sorted
   end
 
 
@@ -16,6 +18,8 @@ class PagesController < ApplicationController
       redirect_to(pages_path)
     else
       flash[:error] = @page.errors.full_messages
+        @page_count = Page.count + 1
+        @subjects = Subject.sorted
       render 'new'
     end
   end
@@ -25,6 +29,8 @@ class PagesController < ApplicationController
   end
 
   def edit
+      @page_count = Page.count
+    @subjects = Subject.sorted
     @page = Page.find(params[:id])
   end
 
@@ -34,6 +40,8 @@ class PagesController < ApplicationController
       flash[:notice] = "Page updated successfully"
       redirect_to(page_path(@page))
     else
+        @page_count = Page.count
+    @subjects = Subject.sorted
       render 'edit'
     end
   end

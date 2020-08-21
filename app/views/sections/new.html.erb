@@ -11,10 +11,9 @@
 
 <div class="sections new">
   <h2>Create Section</h2>
-
   <%= form_for(@section, :url => sections_path, :method => 'post') do |f| %>
 
-  <%= render(:partial 'form', locals: {f: f}) %>
+  <%= render(partial: 'form', :locals => {:f => f}) %>
     <div class="form-buttons">
       <%= f.submit("Create Section") %>
     </div>

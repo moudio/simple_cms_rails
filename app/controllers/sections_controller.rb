@@ -7,6 +7,8 @@ class SectionsController < ApplicationController
   end
   def new
     @section = Section.new
+      @section_count = Section.count + 1
+    @pages = Page.sorted
   end
 
 
@@ -17,11 +19,17 @@ class SectionsController < ApplicationController
       redirect_to(sections_path)
     else
       flash[:error] = @section.errors.full_messages
+         @section = Section.new
+      @section_count = Section.count + 1
+    @pages = Page.sorted
       render 'new'
     end
   end
 
 def edit
+     @section = Section.new
+      @section_count = Section.count 
+    @pages = Page.sorted
 end
 
 
@@ -31,6 +39,9 @@ end
       flash[:notice] = "Section updated successfully"
       redirect_to section_path(@section)
       else
+           @section = Section.new
+      @section_count = Section.count 
+    @pages = Page.sorted
         render 'edit'
     end
   end
