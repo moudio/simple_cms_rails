@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :admin_users do
+  resources :admin_users, except: [:show] do
     member do
       get :delete
     end

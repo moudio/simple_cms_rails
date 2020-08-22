@@ -1,6 +1,6 @@
 <%= render(partial: 'application/error_messages', locals: {:object => @user})%>
-<h1>Create User</h1>
-<%= form_for(@user, url: admin_users_path, :method => "post") do |f| %>
+<h1>Update User</h1>
+<%= form_for(@user) do |f| %>
 
 <table summary="Subject form fields">
     <%= render(partial: 'form', locals: {f: f}) %>
