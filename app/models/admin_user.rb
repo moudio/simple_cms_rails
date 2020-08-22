@@ -26,7 +26,7 @@ class AdminUser < ApplicationRecord
     return "#{first_name} #{last_name}"
   end
 private
-def username_is_allowed username
+def username_is_allowed
   if FORBIDDEN_USERNAMES.include?(username)
     errors.add(:username, ' has been restricted from use')
   end
