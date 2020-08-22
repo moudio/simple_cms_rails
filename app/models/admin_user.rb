@@ -1,5 +1,5 @@
 class AdminUser < ApplicationRecord
-
+  has_secure_password
   has_and_belongs_to_many :pages
   has_many :section_edits
   has_many :sections, through: :section_edits
@@ -20,7 +20,7 @@ class AdminUser < ApplicationRecord
   validate :username_is_allowed
   validate :no_new_users_on_friday, :on => :create
 private
-def username_is_allowed
+def username_is_allowed username
   if FORBIDDEN_USERNAMES.include?(username)
     errors.add(:username, ' has been restricted from use')
   end
