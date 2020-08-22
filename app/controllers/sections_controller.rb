@@ -1,5 +1,4 @@
 class SectionsController < ApplicationController
-
   layout 'admin'
   before_action :set_section, only: [:show, :edit, :delete, :destroy, :update]
   before_action :section_count, only: [:new, :create, :edit, :update]

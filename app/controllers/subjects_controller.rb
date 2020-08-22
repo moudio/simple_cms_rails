@@ -2,6 +2,7 @@ class SubjectsController < ApplicationController
   before_action :subject_count, only: [:new, :create, :edit, :update]
   layout 'admin'
   def index
+    logger.debug("Testing the logger. *****")
     @subjects = Subject.sorted
     @page_title = "All Subjects"
   end
