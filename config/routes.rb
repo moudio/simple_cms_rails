@@ -23,6 +23,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :admin_users do
+    member do
+      get :delete
+    end
+  end
+
   get 'demo/index'
   get 'demo/hello'
   get 'demo/other_hello'
