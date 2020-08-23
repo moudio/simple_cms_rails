@@ -19,8 +19,8 @@
       </tr>
 
     <tr>
-    <th>Subject ID</th>
-        <td><%= f.select(:subject_id, 1...@subjects.count) %></td>
+    <th>Subject </th>
+        <td><%= f.object.subject.name %></td>
   </tr>
 
     </table>

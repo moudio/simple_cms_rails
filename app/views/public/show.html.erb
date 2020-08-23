@@ -1,6 +1,5 @@
 <% @page_title = @page.name %>
 <h2><%= @page.name %></h2>
-
 <% @page.sections.visible.sorted.each do |section| %>
   <div class="section">
     <% case section.content_type %>

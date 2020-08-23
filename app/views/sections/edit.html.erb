@@ -7,12 +7,12 @@
 </div>
 <% end %>
 
-<%= link_to("<< Back to List", sections_path, :class => 'back-link') %>
+<%= link_to("<< Back to List", sections_path(:page_id => @page.id), :class => 'back-link') %>
 
 <div class="sections new">
   <h2>Create Section</h2>
 
-  <%= form_for(@section) do |f| %>
+  <%= form_for(@section, :url => section_path(@section, :page_id => @page.id)) do |f| %>
 
   <%= render(partial: 'form', locals: {:f => f}) %>
 

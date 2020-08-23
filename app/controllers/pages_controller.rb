@@ -4,11 +4,9 @@ class PagesController < ApplicationController
   # a filter is a code that runs before or after the excecution of an action
   before_action :confirm_logged_in
   before_action :find_subject
-
-  before_action :find_subjects, only: [:new, :create, :edit, :update]
   before_action :set_page_count, only: [:new, :create, :edit, :update]
   def index
-    @pages = @subject.pages.sorted
+    @pages = @subject.pages.visible.sorted
   end
 
   def new
@@ -18,6 +16,7 @@ class PagesController < ApplicationController
 
   def create
     @page = Page.new(page_params)
+    @page.subject = @subject
     if @page.save
       flash[:notice] = "Page created successfully"
       redirect_to(pages_path(:subject_id => @subject.id))
@@ -62,17 +61,14 @@ def find_subject
   @subject = Subject.find(params[:subject_id])
 end
 def set_page_count
-  @page_count = Page.count
+  @page_count = @subject.pages.count
   if params[:action] == 'new' || params[:action] == 'create'
     @page_count += 1
   end
 end
   # we define the find_subject as a private method to avoid having it to be called outside of the controller by a request for example
-  def find_subjects
-    @subjects = Subject.sorted
-  end
 
   def page_params
-    params.require(:page).permit(:name, :permalink, :position, :visible, :subject_id)
+    params.require(:page).permit(:name, :permalink, :position, :visible)
   end
 end
