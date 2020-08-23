@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'public/index'
+  root 'public#index'
   get 'show:permalink', to: 'public#show'
 
 
