@@ -2,7 +2,8 @@ class Section < ApplicationRecord
   belongs_to :page
   has_many :section_edits
   has_many :admin_users, through: :section_edits
-
+  scope :visible, lambda{where(:visible => true)}
+  scope :sorted, -> {order("position ASC")}
 
   CONTENT_TYPES = ['text', 'HTML']
   validates_presence_of :name
