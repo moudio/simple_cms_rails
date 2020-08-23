@@ -6,12 +6,12 @@
 </div>
 <% end %>
 
-<%= link_to("<< Back to List", pages_path, :class => 'back-link') %>
+<%= link_to("<< Back to List", pages_path(:subject_id => @subject.id), :class => 'back-link') %>
 
 <div class="pages new">
   <h2>Create Page</h2>
 
-  <%= form_for(@page, :url => pages_path, :method => 'post') do |f| %>
+  <%= form_for(@page, :url => pages_path(:subject_id => @subject.id), :method => 'post') do |f| %>
 
     <%= render(partial: 'form', :locals =>{ f: f } )%>
 

@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Simple CMS : <%="| #{@page_title}" if @page_title%></title>
+  <title>Simple CMS <%="| #{@page_title}" if @page_title%></title>
 <%= stylesheet_link_tag('application', :media => 'all') %>
 </head>
 <body>
 <div id="header">
   <h1>Simple CSS </h1>
   <div id="main">
-
+<div id="navigation">
+<%= render(:partial => 'layouts/navigation', locals: {:subjects => @subjects}) %>
+</div>
 <div id="content">
   <%= yield %>
   </div>
   <div class="clear"></div>
   </div>
-  
+
   <div id="footer">
     <p id="copyright">&copy; Mouhamadou</p>
   </div>
